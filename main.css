@@ -1,0 +1,152 @@
+.selection1{
+	position: absolute;
+	float: left;
+    top: 5pt;
+    left: 9pt;
+	width: 128pt;
+	height: 490pt;
+	background: rgb(249,249,249);	
+}
+.gesture_title{
+	position: relative;
+	float: left;
+    top: 3pt;
+    left: 2%;
+	width: 96%;
+	height: 10%;
+}
+p.gesture{
+	text-align: center;
+	color:black;
+    font-family:courier;
+    font-size:1.6em;
+}
+p.ges{
+	text-align: center;
+	color:black;
+    font-family:courier;
+    font-size: 1em;
+}
+.gestures_outer{
+	overflow-y: auto;
+	position: relative;
+	float: left;
+    top: 1%;
+    left: 2%;
+	width: 96%;
+	height: 89%;
+}
+.gestures_inner{
+	position: relative;
+	float: left;
+    top: 1%;
+    left: 2%;
+	width: 96%;
+	height: auto;
+}
+.selection2{
+	position: fixed;
+	float: left;
+    top: 5pt;
+    left: 140pt;
+	width: 148pt;
+	height: 490pt;
+	background: rgb(249,249,249);
+}
+.country_title{
+	position: relative;
+	float: left;
+    top: 1%;
+    left: 2%;
+	width: 96%;
+	height: 10%;
+}
+p.country{
+	text-align: center;
+	color:black;
+    font-family:courier;
+    font-size:1.6em;
+}
+p.cou{
+	text-align: center;
+	color:black;
+    font-family:courier;
+    font-size:1em;
+}
+.countries_outer{
+	overflow-y: auto;
+	position: relative;
+	float: left;
+    top: 1%;
+    left: 2%;
+	width: 96%;
+	height: 89%;
+}
+.countries_inner{
+	position: relative;
+	float: left;
+    top: 1%;
+    left: 2%;
+	width: 96%;
+	height: auto;
+}
+.submit{
+	position: fixed;
+	float: left;
+    top: 498pt;
+    left: 9pt;
+	width: 278pt;
+	height: 50pt;
+	background: rgb(249,249,249);
+}
+.but{
+	position: relative;
+	float: left;
+    top: 10pt;
+    left: 39pt;
+	width: 200pt;
+	height: 35pt;
+	background: rgb(249,249,249);
+}
+.button{
+	width: 200pt;
+	height: 35pt;
+	background-color: rgb(108,123,139);
+	text-align: center;
+	color:black;
+    font-family:courier;
+    font-size:1.6em;
+}
+.videos{
+	overflow-y: auto;
+	position: fixed;
+	float: left;
+    top: 1%;
+    left: 27%;
+	width: 71.8%;
+	height: 542pt;
+	background: rgb(249,249,249);
+}
+.videos_inner{
+	position: relative;
+	float: left;
+    top: 1%;
+    left: 1%;
+	width: 98%;
+	height: auto;
+}
+p.title{
+	text-align: left;
+	color:black;
+    font-family:courier;
+    font-size:1.6em;
+}
+p.sub_title{
+	text-align: left;
+	color:black;
+    font-family:courier;
+    font-size:0.9em;
+}
+.selected {
+    background-color : rgb(70,130,108);
+}
