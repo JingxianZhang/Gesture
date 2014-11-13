@@ -1,5 +1,5 @@
-var gestures=["Greeting","Eating","Religious Service","I Like You","Shocked","Stop","Making Vows","Sleep"];
-var countries=["United States","India","Iran","China","South Korea","Japan","Germany","Great Britain"];
+var gestures=["Dance","Greeting","Shocked","Eating","Religious Service","Stop","Feeling Cold","Thank You","Depressed"];
+var countries=["Iran","China","India","United States","South Korea","Japan","Germany","Great Britain"];
 
 var back="rgb(173,216,230)";
 var back_highlight="rgb(79,148,205)";
@@ -8,7 +8,7 @@ var videos=new Array(gestures.length);
 for(var i=0;i<gestures.length;i++){
 	videos[i]=new Array(countries.length);
 	for(var j=0;j<countries.length;j++){
-		videos[i][j]="gesture0.mp4";
+		videos[i][j]="gesture"+j+i+".mp4";//"gesture0.mp4";
 	}
 }
 
@@ -186,7 +186,7 @@ var compare=function(){
 					num++;
 				}
 			}
-			height=num*160;
+			height=num*169;
 		}
 		else if(num_ges>=1&&num_cou==1){
 			var num=0;
@@ -198,7 +198,7 @@ var compare=function(){
 					num++;
 				}
 			}
-			height=num*160;
+			height=num*169;
 		}
 		var s1 = d3.select("body").select(".videos").select(".videos_inner");
 		s1.attr("height",height+100);
@@ -218,8 +218,8 @@ var compare=function(){
 					.style("position","relative")
 					.style("top","0")
 					.style("left","0pt")
-					.style("width","150pt")
-					.style("height","120pt");
+					.style("width","230pt")
+					.style("height","160pt");//larger
 		ges1
 					.append("p")
 					.attr("class","sub_title")
@@ -232,9 +232,9 @@ var compare=function(){
 					 	return "myvideo"+i;
 					 })
 					 .style("position","relative")
-					 .style("top","0")
-					 .attr("width","190pt")
-					 .attr("height","120pt")
+					 .style("top","-5pt")
+					 .attr("width","230pt")
+					 .attr("height","160pt")//larger
 					 .attr("preload","metadata")
 					 .attr("controls","")
 					 .attr("muted","")
@@ -249,15 +249,15 @@ var compare=function(){
 				return data[0].substring(0,data[0].length-3)+"ogg";
 			})
 			.attr("type","video/ogg");
-			var canvas_top=-height*3.3/4;
+			var canvas_top=-height;
 		s1.selectAll("canvas").remove("canvas");	
 		s1.append("canvas")
 		  .attr("id","myCanvas")
 		  .style("position","relative")
-		  .style("top",(canvas_top+15)+"pt")
-		  .style("left","140pt")
-		  .attr("width","820pt")
-		  .attr("height",(height*1.2)+"pt");
+		  .style("top",(canvas_top)+"pt")
+		  .style("left","190pt")//260
+		  .attr("width","700pt")//646
+		  .attr("height",(height*1.5)+"pt");
 		
         var myCanvas = document.getElementById('myCanvas');
 		/*setTimeout(function(){
@@ -269,19 +269,32 @@ var compare=function(){
 		        var dataURL = myCanvas.toDataURL();
 			}
 		}, 80);*/
+		var inter=300;
+		var ifend=[];
+		for(var i=0;i<(num_cou>num_ges? num_cou:num_ges);i++) ifend[i]=0;
+		var context = myCanvas.getContext('2d');
+		context.globalAlpha = 1;
+		var nnn=num_cou>num_ges? num_cou:num_ges;
+		var p0=0;
 		var interval=setInterval(function(){
-			var ifend=[];
-			for(var i=0;i<(num_cou>num_ges? num_cou:num_ges);i++) ifend[i]=0;
-			var context = myCanvas.getContext('2d');
-			context.globalAlpha = 0.1;
-			for(var i=0;i<(num_cou>num_ges? num_cou:num_ges);i++){
-				var video;
+			for(var i=0;i<nnn;i++){
+				var video;var loc=0;
+				if(p0<=2){
 				if(ifend[i]!=1){
 					var v_name="myvideo"+i;
 					video = document.getElementById(v_name);	
-					context.drawImage(video, video.currentTime/video.duration*(820-170), 30+i*175, 170, 120);
+					//context.drawImage(video, video.currentTime/video.duration*(820-400), 30+i*330, 400, 240);//larger
+					context.drawImage(video, (p0-3)*170, 35+i*228, 190, 160);//larger
 				}
-		        var dataURL = myCanvas.toDataURL();
+				}
+				if(p0>2){
+				if(ifend[i]!=1){
+					var v_name="myvideo"+i;
+					video = document.getElementById(v_name);	
+					//context.drawImage(video, video.currentTime/video.duration*(820-400), 30+i*330, 400, 240);//larger
+					context.drawImage(video, (p0-3)*170, 35+i*228, 190, 160);//larger
+				}
+		        //var dataURL = myCanvas.toDataURL();
 		        if(video.currentTime>=video.duration){
 		        	ifend[i]=1;
 		        }
@@ -290,8 +303,10 @@ var compare=function(){
 		        	k++;
 		        }
 		        if(k==ifend.length) clearInterval(interval);
+		       }
 	       }
-		}, 500);
+	       p0++;
+		}, inter);
 	}
 	else{
 		if(num_ges<1){
